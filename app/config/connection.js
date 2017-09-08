@@ -3,10 +3,10 @@
 // *********************************************************************************
 
 // Dependencies
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
 // Creates mySQL connection using Sequelize
-var sequelize = new Sequelize("better_db", "root", "11", {
+var sequelize = new Sequelize("better_db", "root", "Kihyun123", {
   host: "localhost",
   dialect: "mysql",
   pool: {
