@@ -1,9 +1,21 @@
--- Insert preliminary data
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("Big Mac", true);
 
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("Whopper", false);
+CREATE TABLE authentication(
+id Int( 11 ) AUTO_INCREMENT NOT NULL,
+first_name VARCHAR( 255) NOT NULL,
+last_name VARCHAR( 255) NOT NULL,
+email VARCHAR( 255) NOT NULL,
+password VARCHAR( 255 ) NOT NULL,
+PRIMARY_KEY (id);
+);
 
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("Chic-fila", true);
+CREATE TABLE players_data(
+id Int( 11 ) AUTO_INCREMENT NOT NULL,
+first_name VARCHAR( 255) NOT NULL,
+last_name VARCHAR( 255) NOT NULL,
+email VARCHAR( 255) NOT NULL,
+password VARCHAR( 255 ) NOT NULL,
+account_balance INTEGER ( 255 ) NOT NULL,
+wins INTEGER ( 255 ) NOT NULL,
+loses INTEGER( 255 ) NOT NULL,
+PRIMARY_KEY (id);
+);
