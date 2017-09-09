@@ -7,10 +7,11 @@ body {
     margin-top: 30px;
 }
 .chips {
-    position: relative;
-    top: 260px;
-    height: 0px;
-    width: 160px;
+   position: fixed;
+   bottom: 40px;
+   left: 60px;
+   z-index: 1;
+
 }
 
 #oneDollarChip {
@@ -43,15 +44,85 @@ body {
     position: relative;
     width: 50px;
     height: 50px;
-}
+ }
 
 .col-md-offset-9 {
     margin-left: 75%;
-}
+} 
 
 .column-md-1 {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
+}
+
+#marquee img {
+    padding-right: 10%;
+}
+div {
+    border: 1px solid purple;
+}
+
+#dealerHand {
+    height: 120px;
+    margin: 0 auto;
+}
+#dealerHand > div {
+    margin-left: 40%;
+    width: 600px;
+    padding-right: 30px;
+ }
+#dealerFaceCard {
+    display: inline-block;
+    margin: 30px auto;
+    border: 1px solid pink;
+    height: 120px;
+    width: 90px;
+    margin: 30px 2px 0 0;
+   
+}
+#dealerHiddenCard {
+    display: inline-block;
+    margin: 0 auto;
+    height: 120px;
+    width: 90px;
+    background-image: url("../img/cardback.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+} 
+.playerCards {
+    border: 1px solid orangered;
+    height: 120px;
+    width:  auto;
+
+}
+.middle-row {
+    margin-top: 80px;
+}
+
+.bottom-row {
+    margin-bottom: 10px;
+}
+
+#wagerBox {
+    position: fixed;
+    bottom: 0px;
+    left: -10px;
+    width: 400px;
+    height: 200px;  
+}
+
+#wagerBox > img {
+    position: fixed;
+    bottom: 0px;
+    left: -10px;
+    width: 400px;
+    height: 200px; 
+    z-index: -1;  
+}
+#wagerBox > p {
+    margin-top: 40px;
+    margin-left: 80px;
+    font-size: 20px;
 }
