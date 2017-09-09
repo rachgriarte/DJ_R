@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-var Player = require("../models/connection.js");
+var Player = require("../models/blackjack.js");
 
 // Routes
 // =============================================================
