@@ -58,6 +58,11 @@
         {{#if user}}
           {{!-- Logout --}}
           <li class="nav-item">
+            <a class="nav-link text-white"">You are logged in as: {{user.name}}</a>
+          </li>
+
+          {{!-- Logout --}}
+          <li class="nav-item">
             <a class="nav-link" href="/users/logout">Logout</a>
           </li>
         {{else}}
