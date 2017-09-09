@@ -1,0 +1,45 @@
+{{!-- Navigation Bar --}}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">BETter</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    {{!-- Empty div for placement --}}
+    <div class="mr-auto"></div>
+    
+    {{!-- Authentication Links --}}
+    <ul class="navbar-nav mr-2">
+      {{!-- Login --}}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">Login</a>
+      </li>
+
+      {{!-- Register --}}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/register">Register</a>
+      </li>
+
+      {{!-- Logout --}}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid main-container">
+  <div id="marquee"> 
+    <img src="/assets/img/marquee.png" alt="Marquee" height="170px" width="340px">
+  </div> <!--closes record div-->
+
+  <div class="chips">
+    <img id="oneDollarChip" src="/assets/img/oneDollarChip.png" alt="One Dollar Chip">
+    <img id="fiveDollarChip" src="/assets/img/fiveDollarChip.png" alt="Five Dollar Chip">
+    <img id="twentyFiveDollarChip" src="/assets/img/twentyFiveDollarChip.png" alt="Twenty Five Dollar Chip">
+    <img id="oneHundredDollarChip" src="/assets/img/oneHundredDollarChip.png" alt="Five Dollar Chip">
+    <img id="fiveHundredDollarChip" src="/assets/img/fivehundredDollarChip.png" alt="Five Dollar Chip">
+  </div> <!--closes chips div-->
+</div> <!--closes container-fluid div-->

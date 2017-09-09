@@ -4,7 +4,8 @@ const router = express.Router();
 
 // Get homepage
 router.get('/', (req, res) => {
-  res.render('index');
+  // Renders the index page and loads the style.css file
+  res.render('index', {css: ['style.css'] });
 });
 
 // Exports router

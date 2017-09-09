@@ -1,0 +1,38 @@
+{
+  "name": "dj_r",
+  "version": "1.0.0",
+  "description": "BETter web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachgriarte/DJ_R.git"
+  },
+  "author": "BETter Project Team. Reference ReadMe file for contributors.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachgriarte/DJ_R/issues"
+  },
+  "homepage": "https://github.com/rachgriarte/DJ_R#readme",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.10",
+    "mysql": "*",
+    "mysql2": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "sequelize": "*"
+  }
+}

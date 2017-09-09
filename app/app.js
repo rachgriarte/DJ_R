@@ -9,7 +9,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const mysql = require('mysql');
+const mongo = require('mongodb');
+const mongoose = require('mongoose');
 
 // Connect with MongoDB
 mongoose.connect('mongodb://localhost/betterapp');
@@ -51,7 +52,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Express Validator Middleware Options
-app.use(expressValidator({
+app.use(expVal({
   errorFormatter: (param, msg, value) => {
     var namespace = param.split('.'),
     root = namespace.shift(),
