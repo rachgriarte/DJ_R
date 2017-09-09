@@ -1,17 +1,59 @@
 <div class="container-fluid">
   <div class="row">
-    <div class=" col-md-offset-9">
-      <div id="marquee">
-        <img src="../assets/img/marquee.png" alt="Marquee" height="170px" width="340px">
-      </div>
-    </div> <!--closes marquee div-->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12" id="dealerHand">
+        <div class="dealerCards">
+          <div id="dealerHiddenCard"></div>
+          <div id="dealerFaceCard"></div>
+        </div><!--closes dealerCards-->
+      </div><!--closes col-md-12-->
+    </div><!--closes row-->
+    </div> <!--closes col-md-6-->
+  
+  <div class="col-md-3">
+    <div id="marquee">
+      <img src="../assets/img/marquee.png" alt="Marquee" height="170px" width="340px">
+    </div>
+    <!--closes marquee div-->
+  </div> <!--closes col-md-3-->
+</div> <!--closes first row-->
+<div class="row middle-row">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12" id="playerHand">
+        <div class="playerCards">
+        </div><!--closes playerCards-->
+      </div><!--closes col-md-12-->
+    </div><!--closes row-->
+    </div> <!--closes col-md-6-->
+  
+  <div class="col-md-3">
+    <button id="deal">Deal</button>
+    <button id="hit">Hit</button>
+    <button id="stand">Stand</button>
+</div><!--closes row-->
+</div>
+<div class="row bottom-row">
+  <div class="col-md-3">
+    <div id="wagerBox"><p id="betAmount"> Click Chips to place your bet!</p>
+      <img src="/assets/img/wagerbox.png">
+    </div>
+    <div class="chips">
+  <img id="oneDollarChip" src="/assets/img/oneDollarChip.png" alt="One Dollar Chip">
+  <img id="fiveDollarChip" src="/assets/img/fiveDollarChip.png" alt="Five Dollar Chip">
+  <img id="twentyFiveDollarChip" src="/assets/img/twentyFiveDollarChip.png" alt="Twenty Five Dollar Chip">
+  <img id="oneHundredDollarChip" src="/assets/img/oneHundredDollarChip.png" alt="Five Dollar Chip">
+  <img id="fiveHundredDollarChip" src="/assets/img/fivehundredDollarChip.png" alt="Five Dollar Chip">
+</div>
+<!--closes chips div-->
+  </div>
+    <div class="col-md-6"></div>
+  <div class="col-md-3">
   </div>
 
-    <div class="chips">
-      <img id="oneDollarChip" src="/assets/img/oneDollarChip.png" alt="One Dollar Chip">
-      <img id="fiveDollarChip" src="/assets/img/fiveDollarChip.png" alt="Five Dollar Chip">
-      <img id="twentyFiveDollarChip" src="/assets/img/twentyFiveDollarChip.png" alt="Twenty Five Dollar Chip">
-      <img id="oneHundredDollarChip" src="/assets/img/oneHundredDollarChip.png" alt="Five Dollar Chip">
-      <img id="fiveHundredDollarChip" src="/assets/img/fivehundredDollarChip.png" alt="Five Dollar Chip">
-    </div> <!--closes chips div-->
+</div><!--closes row-->
+
 </div> <!--closes container-fluid div-->
