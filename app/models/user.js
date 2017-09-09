@@ -30,3 +30,28 @@ module.exports.createUser = (newUser, cb) => {
     });
   });
 };
+
+// Exports the function to get the username in the db
+module.exports.getUserByUsername = (username, cb) => {
+  const query = {
+    username: username
+  };
+
+  // Find user in db
+  User.findOne(query, cb);
+}
+
+// Exports the function to get the username in the db
+module.exports.getUserById = (id, cb) => {
+  // Find user in db
+  User.findById(id, cb);
+} 
+
+// Exports the function to compare password
+module.exports.comparePassword = (enteredPass, hash, cb) => {
+  bcrypt.compare(enteredPass, hash, (error, match) => {
+    if (error) throw error;
+
+    cb(null, match);
+  });
+}

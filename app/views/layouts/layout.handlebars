@@ -13,7 +13,10 @@
   {{/each}}
 
   <link rel="stylesheet" type="text/css" href="/assets/css/narrow-jumbotron.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+
+  {{#each css2}}
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+  {{/each}}
 
   <title>BETter App</title>
 </head>
@@ -37,6 +40,42 @@
       {{error}}
     </div>
   {{/if}}
+
+  {{!-- Navigation Bar --}}
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">BETter</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      {{!-- Empty div for placement --}}
+      <div class="mr-auto"></div>
+      
+      {{!-- Authentication Links --}}
+      <ul class="navbar-nav mr-2">
+        {{#if user}}
+          {{!-- Logout --}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
+          </li>
+        {{else}}
+          {{!-- Login --}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login">Login</a>
+          </li>
+
+          {{!-- Register --}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/register">Register</a>
+          </li>
+        {{/if}}
+
+
+      </ul>
+    </div>
+  </nav>
 
   {{{body}}}
 

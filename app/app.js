@@ -23,9 +23,9 @@ const users = require('./routes/users');
 // Initialize app
 const app = express();
 
-// View engine
 // Folder views will handle all of the views
 app.set('views', path.join(__dirname, 'views'));
+
 // handlebars app engine
 // default layout = layout
 app.engine('handlebars', exphbs({ defaultLayout:'layout' }));
@@ -77,6 +77,8 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  // Global user variable that can be accessed once logged in or null if not logged in
+  res.locals.user = req.user || null;
   next();
 });
 
