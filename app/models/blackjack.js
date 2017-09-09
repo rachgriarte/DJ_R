@@ -12,6 +12,6 @@ var Player = sequelize.define('', {
 });
 
 // Sync with database
-player.sync();
+Player.sync();
 // Export the Player Model
 module.exports = Player;
