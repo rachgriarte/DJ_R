@@ -1,4 +1,4 @@
-html {
+body {
     background: url(../img/blackjack-table-adjusted.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -44,11 +44,13 @@ html {
     height: 50px;
 }
 
-#marquee {
-    position: fixed;
-    bottom: 180px;
-    left: 0px;
-    width: 50px;
-    height: 0px;
+.col-md-offset-9 {
+    margin-left: 75%;
 }
 
+.column-md-1 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
