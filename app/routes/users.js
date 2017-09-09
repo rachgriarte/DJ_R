@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
+const User = require('../models/user');
 
 // Get register route
 router.get('/register', (req, res) => {
@@ -34,12 +35,27 @@ router.post('/register', (req, res) => {
   var errors = req.validationErrors();
 
   if(errors) {
-    res.render('/register', {
+    res.render('register', {
       // Pass along errors
       errors: errors
     })
   } else {
-    console.log('There are no errors');
+    var newUser = new User({
+      name: name,
+      email: email,
+      username: username,
+      password: password
+    });
+
+    User.createUser(newUser, (error, user) => {
+      if(error) throw error;
+      console.log(user);
+    });
+
+    req.flash('success_msg', 'You are registered and can now login.');
+
+    // Redirects to login page
+    res.redirect('/users/login');
   }
 });
 

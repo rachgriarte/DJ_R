@@ -1,5 +1,14 @@
 <h2 class="page-header">Account Registration</h2> 
 
+{{!-- Check to see if there are errors --}}
+{{#if errors}}
+  {{#each errors}}
+    <div class="alert alert-danger">
+      {{msg}}
+    </div>
+  {{/each}}
+{{/if}}
+
 <form method="POST" action="/users/register">
   <div class="form-group">
     <label>Name</label>
@@ -23,7 +32,7 @@
 
   <div class="form-group">
     <label>Confirm Password</label>
-    <input type="text" class="form-control" placeholder="Password" name="password2">
+    <input type="password" class="form-control" placeholder="Password" name="password2">
   </div>
 
   <button type="submit" class="btn btn-default">Submit</button>

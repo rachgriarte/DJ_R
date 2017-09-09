@@ -14,7 +14,6 @@ const mongoose = require('mongoose');
 
 // Connect with MongoDB
 mongoose.connect('mongodb://localhost/betterapp');
-
 const db = mongoose.connection;
 
 // Connect routes
