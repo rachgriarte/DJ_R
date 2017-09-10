@@ -1,27 +1,15 @@
-// NPM dependencies
+// NPM Dependencies
 const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
-const expVal = require('express-validator');
-const flash = require('connect-flash');
-const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const mongo = require('mongodb');
-const mongoose = require('mongoose');
-
-// Connect with MongoDB
-mongoose.connect('mongodb://localhost/betterapp');
-const db = mongoose.connection;
-
-// Connect routes
-const routes = require('./routes/index');
-const users = require('./routes/users');
-
-// Initialize app
 const app = express();
+const passport = require('passport');
+const session = require('express-session');
+const env = require('dotenv').load();
+const exphbs = require('express-handlebars');
+const path = require('path');
+const LocalStrategy = require('passport-local').Strategy;
+
+var PORT = process.env.PORT || 8080;
 
 // Folder views will handle all of the views
 app.set('views', path.join(__dirname, 'views'));
@@ -34,10 +22,6 @@ app.set('view engine', 'handlebars');
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-// Set static public folder
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware for Express sessions
 app.use(session({
@@ -45,51 +29,32 @@ app.use(session({
   saveUninitialized: true,
   resave: true
 }));
-
-// Initialize PassportJS
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); // persistent login sessions
 
-// Express Validator Middleware Options
-app.use(expVal({
-  errorFormatter: (param, msg, value) => {
-    var namespace = param.split('.'),
-    root = namespace.shift(),
-    formParam = root;
+// Set static public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
+// Models
+var models = require("./models");
 
-    return {
-      param: formParam,
-      msg: msg,
-      value: value
-    };
-  }
-}));
+// Routes
+var authRoute = require('./routes/auth.js')(app, passport);
 
-// Connect Flash
-app.use(flash());
+// Load passport strategies
+require('./config/passport/passport.js')(passport, models.user);
 
-// Global variables (res.locals)
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  // Global user variable that can be accessed once logged in or null if not logged in
-  res.locals.user = req.user || null;
-  next();
+// Sync Database
+models.sequelize.sync().then(function() {
+  console.log('Database is synced.')
+}).catch(function(err) {
+  console.log(err, "There is a database error.");
 });
 
-// Map route files
-app.use('/', routes);
-app.use('/users', users);
-
-// Set port
+// Set Port
 app.set('port', (process.env.PORT || 3000));
 
-// Port listener
+// Port Listener
 app.listen(app.get('port'), () => {
   console.log('Server is running on port ' + app.get('port'));
 });

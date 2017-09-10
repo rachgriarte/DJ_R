@@ -1,5 +1,5 @@
 {
-  "name": "dj_r",
+  "name": "better-app",
   "version": "1.0.0",
   "description": "BETter web application",
   "main": "index.js",
@@ -26,8 +26,8 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
-    "mongodb": "^2.2.31",
-    "mongoose": "^4.11.10",
+    "bcrypt-nodejs": "*",
+    "dotenv": "*",
     "mysql": "*",
     "mysql2": "*",
     "passport": "*",
