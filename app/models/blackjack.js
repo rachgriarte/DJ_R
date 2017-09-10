@@ -7,8 +7,24 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js")
 
 // Create a player
-var Player = sequelize.define('', {
-
+var Player = sequelize.define('better_db', {
+    id: {
+        type: String,
+        index: true
+    },
+    player_id: {
+        type: String
+    },
+    account_balance: {
+        type: String
+    },
+    deal: {
+        type: String
+    },
+    win_outcome: {
+        type: String
+    }
+    });
 });
 
 // Sync with database
