@@ -20,11 +20,9 @@ module.exports = (app, passport) => {
   app.post('/login', passport.authenticate('local-signin', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: 'Please enter in missing credentials'
-  }),
-  (req, res) => {
-    res.redirect('/');
-  });
+    failureFlash: 'Please enter in missing credentials',
+    successMessage: 'Welcome to the BETter App!'
+  }))
 }
 
 function isLoggedIn(req, res, next) {
