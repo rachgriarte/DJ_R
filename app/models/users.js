@@ -31,6 +31,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       defaultValue: 0
     },
+    ties: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    totalBlackJacks: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
     status: {
       type: Sequelize.ENUM('active', 'inactive'),
       defaultValue: 'active'
