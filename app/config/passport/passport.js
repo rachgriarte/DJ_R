@@ -26,9 +26,9 @@ module.exports = (passport, user) =>{
       }).then(function(user) {
         if (user)
         {
-          return done(null, false, {
-            message: 'That email is already taken'
-          });
+          return done(null, false, 
+            req.flash('error_msg', 'Email address is taken. Please enter a new email address.')
+          );
         } else {
           var userPassword = generateHash(password);
 
@@ -76,15 +76,15 @@ module.exports = (passport, user) =>{
         }
       }).then((user) => {
         if (!user) {
-          return done(null, false, {
-            message: 'Email does not exist'
-          });
+          return done(null, false, 
+            req.flash('error_msg', 'Email does not exist. Please enter in a valid email address.')
+          );
         }
 
         if (!isValidPassword(user.password, password)) {
-          return done(null, false, {
-            message: 'Incorrect password.'
-          });
+          return done(null, false, 
+            req.flash('error_msg', 'Password is incorrect. Please enter in the correct password.')
+          );
         }
 
         var userinfo = user.get();

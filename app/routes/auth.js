@@ -10,7 +10,7 @@ module.exports = (app, passport) => {
     passport.authenticate('local-signup', {
       successRedirect: '/',
       failureRedirect: '/register',
-      failureFlash: 'Please enter in all required fields'
+      failureFlash: true
     }));
 
   app.get('/logout', authController.logout);
@@ -20,7 +20,7 @@ module.exports = (app, passport) => {
   app.post('/login', passport.authenticate('local-signin', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: 'Please enter in missing credentials',
+    failureFlash: true,
     successMessage: 'Welcome to the BETter App!'
   }))
 }
