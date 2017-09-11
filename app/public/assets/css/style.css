@@ -60,9 +60,6 @@ body {
 #marquee img {
     padding-right: 10%;
 }
-div {
-    border: 1px solid purple;
-}
 
 #dealerHand {
     height: 120px;
@@ -73,7 +70,15 @@ div {
     width: 600px;
     padding-right: 30px;
  }
-#dealerFaceCard {
+
+ #dealerFaceCard {
+    display: inline-block;
+    margin: 0 auto;
+    height: 120px;
+    width: 90px;
+ }
+
+#dealerFaceCard img{
     display: inline-block;
     margin: 30px auto;
     border: 1px solid pink;
@@ -92,11 +97,15 @@ div {
     background-size: contain;
 } 
 .playerCards {
-    border: 1px solid orangered;
+    /* border: 1px solid orangered; */
     height: 120px;
     width:  auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
 
 }
+
 .middle-row {
     margin-top: 80px;
 }
@@ -125,4 +134,15 @@ div {
     margin-top: 40px;
     margin-left: 80px;
     font-size: 20px;
+}
+
+#betAmount {
+    color: red;
+}
+
+.dealerCards img {
+    height: 120px;
+    width: 80px;
+    margin-right: 5px;
+    margin-top: 30px;
 }
