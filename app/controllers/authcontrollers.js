@@ -1,6 +1,7 @@
 var exports = module.exports = {}
 
 // THIS IS JUST A TEST TO SEE IF user DATA CAN BE STORED
+// NEED a way to access db information and show it on handlebars
 var con = require('../config/passport/passport.js');
 
 // THIS IS UNDEFINED. NEED TO FIX
