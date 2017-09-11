@@ -33,6 +33,8 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "sequelize": "*"
+    "sequelize": "*",
+    "fs-promise": "*",
+    "method-override": "*"
   }
 }
