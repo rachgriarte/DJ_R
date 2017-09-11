@@ -1,5 +1,11 @@
 var exports = module.exports = {}
 
+// THIS IS JUST A TEST TO SEE IF user DATA CAN BE STORED
+var con = require('../config/passport/passport.js');
+
+// THIS IS UNDEFINED. NEED TO FIX
+console.log("conUser: " + con.userData);
+
 exports.register = function(req, res) {
   res.render('register', { css2: ['login.css'] });
 }
@@ -20,10 +26,10 @@ exports.dashboard = function(req, res) {
   //     email: email
   //   }
   // })
+  // console.log(con.userData.firstname);
 
   res.render('index', {
     css: ['style.css'],
-    // firstname: req.body.email
+    // firstname: con.userData.firstname
   });
-
 }
