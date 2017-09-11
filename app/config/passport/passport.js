@@ -73,7 +73,7 @@ module.exports = function(passport, user) {
         where: {
           email: email
         }
-      }).then(function(user) {
+      }).then((user) => {
         if (!user) {
           return done(null, false, {
             message: 'Email does not exist'
