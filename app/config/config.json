@@ -16,13 +16,13 @@
   
      "test": {
   
-         "username": "",
+         "username": "root",
   
          "password": null,
   
-         "database": "",
+         "database": "better_db",
   
-         "host": "",
+         "host": "127.0.0.1",
   
          "dialect": "mysql"
   
@@ -30,11 +30,11 @@
   
      "production": {
   
-         "username": "",
+         "username": "root",
   
          "password": "Kihyun123",
   
-         "database": "",
+         "database": "better_db",
   
          "host": "127.0.0.1",
   
