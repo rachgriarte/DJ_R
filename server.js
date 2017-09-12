@@ -17,8 +17,7 @@ const flash = require('connect-flash');
 // Established port
 var PORT = process.env.PORT || 3000;
 
-// handlebars app engine
-// default layout = layout
+// Handlebars app engine
 app.engine('handlebars', exphbs({ 
   defaultLayout:'layout',
   layoutsDir: path.join(__dirname, 'app/views/layouts')
@@ -28,7 +27,14 @@ app.set('view engine', 'handlebars');
 // Folder views will handle all of the views
 app.set('views', path.join(__dirname, 'app/views'));
 
-app.use(cookieParser('whatever'));
+// Initialize cookieParser
+app.use(cookieParser());
+// Shows connect.sid cookies in console for index
+app.get('/', (req, res) => {
+  console.log('Cookies: ', req.cookies);
+});
+
+// method-override to use with post actions in handlebars
 app.use(methodOverride('_method'));
 
 // BodyParser Middleware
@@ -41,6 +47,8 @@ app.use(session({
   saveUninitialized: true,
   resave: true
 }));
+
+// Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -71,7 +79,7 @@ require('./app/config/passport/passport.js')(passport, models.user);
 //Sync Database
 models.sequelize.sync().then(() => {
   console.log('Database is synced.')
-}).catch(function(err) {
+}).catch((err) => {
   console.log(err, "Database sync error has occurred.")
 });
 

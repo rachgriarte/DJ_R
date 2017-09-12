@@ -17,12 +17,13 @@ module.exports = (app, passport) => {
 
   app.get('/', isLoggedIn, authController.dashboard);
   
-  app.post('/login', passport.authenticate('local-signin', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true,
-    successMessage: 'Welcome to the BETter App!'
-  }))
+  app.post('/login', 
+    passport.authenticate('local-signin', {
+      successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash: true,
+      successMessage: 'Welcome to the BETter App!',
+    }));
 }
 
 function isLoggedIn(req, res, next) {

@@ -1,8 +1,7 @@
 // NPM Dependencies
 const bCrypt = require('bcrypt-nodejs');
-var userInfo;
 
-module.exports = (passport, user) =>{
+module.exports = (passport, user) => {
   var User = user;
 
   const LocalStrategy = require('passport-local').Strategy;
@@ -15,7 +14,7 @@ module.exports = (passport, user) =>{
     },
 
     (req, email, password, done) => {
-      var generateHash = function(password) {
+      var generateHash = (password) => {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
       };
 
@@ -23,7 +22,7 @@ module.exports = (passport, user) =>{
         where: {
           email: email
         }
-      }).then(function(user) {
+      }).then((user) => {
         if (user)
         {
           return done(null, false, 
@@ -88,15 +87,10 @@ module.exports = (passport, user) =>{
         }
 
         var userinfo = user.get();
-        userInfo = userinfo;
-
-        // Data shows up here... TO FIX:
-        // NEED TO FIGURE OUT HOW TO GET THIS DATA INTO HANDLEBARS
-console.log("userinfo stringify: " + JSON.stringify(userinfo));
 
         return done(null, userinfo);
 
-      }).catch(function(err) {
+      }).catch((err) => {
         console.log("Error:", err);
 
         return done(null, false, {
@@ -122,5 +116,3 @@ console.log("userinfo stringify: " + JSON.stringify(userinfo));
     });
   });
 }
-
-module.exports.userData = userInfo;
