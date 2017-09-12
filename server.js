@@ -28,11 +28,7 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'app/views'));
 
 // Initialize cookieParser
-app.use(cookieParser());
-// Shows connect.sid cookies in console for index
-app.get('/', (req, res) => {
-  console.log('Cookies: ', req.cookies);
-});
+app.use(cookieParser('this'));
 
 // method-override to use with post actions in handlebars
 app.use(methodOverride('_method'));
