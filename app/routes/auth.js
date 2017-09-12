@@ -29,9 +29,9 @@ module.exports = (app, passport) => {
 
 // Identifies if the user is logged in successfully
 function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated())
-
-    return next();
-
-  res.redirect('/login');
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.status(401).json({error: 'Authentication failed.'});
+  }
 }
