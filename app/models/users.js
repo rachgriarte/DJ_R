@@ -1,3 +1,4 @@
+// Define user table in DB
 module.exports = (sequelize, Sequelize) => {
   var User = sequelize.define('user', {
     id: {

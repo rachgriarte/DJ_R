@@ -1,6 +1,7 @@
 // Path to Authentication Controller
 const authController = require('../controllers/authcontrollers.js');
 
+// Route Exports
 module.exports = (app, passport) => {
   app.get('/register', authController.register);
 
@@ -26,6 +27,7 @@ module.exports = (app, passport) => {
     }));
 }
 
+// Identifies if the user is logged in successfully
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
 
