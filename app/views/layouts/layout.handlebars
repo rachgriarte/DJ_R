@@ -56,25 +56,26 @@
       {{!-- Authentication Links --}}
       <ul class="navbar-nav mr-2">
 
-          {{!-- Logout --}}
-          <li class="nav-item">
-            <a class="nav-link text-white">You are logged in as: {{firstname}}</a>
-          </li>
+        {{#if firstname}}
+        {{!-- Logout --}}
+        <li class="nav-item">
+          <a class="nav-link text-white">You are logged in as: {{firstname}}</a>
+        </li>
+        {{/if}}
+        {{!-- Logout --}}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
 
-          {{!-- Logout --}}
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
+        {{!-- Login --}}
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
 
-          {{!-- Login --}}
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-
-          {{!-- Register --}}
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
-          </li>
+        {{!-- Register --}}
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
 
       </ul>
     </div>
