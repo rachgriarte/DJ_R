@@ -1,12 +1,12 @@
 // NPM Dependencies
 const bCrypt = require('bcrypt-nodejs');
-var userInfo;
 
-module.exports = (passport, user) =>{
+module.exports = (passport, user) => {
   var User = user;
 
   const LocalStrategy = require('passport-local').Strategy;
 
+  // Local Register
   passport.use('local-signup', new LocalStrategy(
     {
       usernameField: 'email',
@@ -15,23 +15,29 @@ module.exports = (passport, user) =>{
     },
 
     (req, email, password, done) => {
-      var generateHash = function(password) {
+      // Generates a hashed password
+      var generateHash = (password) => {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
       };
 
+      // Identifies if user exists already in DB
       User.findOne({
         where: {
           email: email
         }
-      }).then(function(user) {
+      }).then((user) => {
+        // Checks to see if user already exists
         if (user)
         {
           return done(null, false, 
+            // Displays error message if user already exists
             req.flash('error_msg', 'Email address is taken. Please enter a new email address.')
           );
         } else {
+          // Stores hashed password if user does not already exist
           var userPassword = generateHash(password);
 
+          // Stores user information for new user
           var data = {
             email: email,
             password: userPassword,
@@ -40,6 +46,7 @@ module.exports = (passport, user) =>{
             username: req.body.username
           };
           
+          // Creates new user data in DB
           User.create(data).then((newUser, created) => {
             if (!newUser) {
               return done(null, false);
@@ -54,7 +61,7 @@ module.exports = (passport, user) =>{
     }
   ));
 
-  //LOCAL SIGNIN
+  // Local Signin
   passport.use('local-signin', new LocalStrategy(
     {
       // by default, local strategy uses username and password, we will override with email
@@ -67,51 +74,55 @@ module.exports = (passport, user) =>{
       var User = user;
 
       var isValidPassword = (userpass, password) => {
+        // Compares passwords to ensure they are valid
         return bCrypt.compareSync(password, userpass);
       }
   
+      // Searches DB to see if logged in email exists
       User.findOne({
         where: {
           email: email
         }
       }).then((user) => {
+        // Checks to see if email exists in DB
         if (!user) {
           return done(null, false, 
+            // Displays error message if email does not exist
             req.flash('error_msg', 'Email does not exist. Please enter in a valid email address.')
           );
         }
 
+        // Checks to see if password is valid
         if (!isValidPassword(user.password, password)) {
           return done(null, false, 
+            // Displays error message if password is incorrect
             req.flash('error_msg', 'Password is incorrect. Please enter in the correct password.')
           );
         }
 
+        // Stores user information
         var userinfo = user.get();
-        userInfo = userinfo;
 
-        // Data shows up here... TO FIX:
-        // NEED TO FIGURE OUT HOW TO GET THIS DATA INTO HANDLEBARS
-console.log("userinfo stringify: " + JSON.stringify(userinfo));
-
+        // Returns and provides user information as a cb
         return done(null, userinfo);
-
-      }).catch(function(err) {
+      }).catch((err) => {
+        // Displays error message
         console.log("Error:", err);
 
-        return done(null, false, {
-            message: 'Something went wrong with your Signin'
-        });
+        return done(null, false, 
+          // Displays error message if there is an error with logging in
+          req.flash('error_msg', 'Error occurred: ' + err)
+        );
       });
     }
   ));
 
-  //serialize
+  // Serialize user
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
-  // deserialize user 
+  // Deserialize user 
   passport.deserializeUser((id, done) => {
     User.findById(id).then((user) => {
       if (user) {
@@ -122,5 +133,3 @@ console.log("userinfo stringify: " + JSON.stringify(userinfo));
     });
   });
 }
-
-module.exports.userData = userInfo;

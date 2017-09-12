@@ -1,36 +1,23 @@
 var exports = module.exports = {}
 
-// THIS IS JUST A TEST TO SEE IF user DATA CAN BE STORED
-// NEED a way to access db information and show it on handlebars
-var con = require('../config/passport/passport.js');
-
-// THIS IS UNDEFINED. NEED TO FIX
-console.log("conUser: " + con.userData);
-
-exports.register = function(req, res) {
+exports.register = (req, res) => {
   res.render('register', { css2: ['login.css'] });
 }
 
-exports.login = function(req, res) {
+exports.login = (req, res) => {
   res.render('login', { css2: ['login.css'] });
+  console.log('Cookies: ', req.cookies);
 }
 
-exports.logout = function(req, res) {
+exports.logout = (req, res) => {
   req.logout();
   req.flash('success_msg', 'You have successfully logged out');
   res.redirect('/login');
 }
 
-exports.dashboard = function(req, res) {
-  // users.findOne({
-  //   where: {
-  //     email: email
-  //   }
-  // })
-  // console.log(con.userData.firstname);
-
+exports.dashboard = (req, res) => {
   res.render('index', {
     css: ['style.css'],
-    // firstname: con.userData.firstname
+    firstname: req.user.firstname
   });
 }

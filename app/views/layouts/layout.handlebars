@@ -56,7 +56,9 @@
       {{!-- Authentication Links --}}
       <ul class="navbar-nav mr-2">
 
-          {{!-- Logout --}}
+        {{!-- Displays if there is a user logged in --}}
+        {{#if firstname}}
+        {{!-- Logout --}}
           <li class="nav-item">
             <a class="nav-link text-white">You are logged in as: {{firstname}}</a>
           </li>
@@ -65,7 +67,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
+        {{/if}}
 
+        {{!-- Displays if there is no user logged in --}}
+        {{#unless firstname}}
           {{!-- Login --}}
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
@@ -75,7 +80,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/register">Register</a>
           </li>
-
+        {{/unless}}
       </ul>
     </div>
   </nav>
