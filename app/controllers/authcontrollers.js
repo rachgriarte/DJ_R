@@ -17,5 +17,6 @@ exports.logout = (req, res) => {
 exports.dashboard = (req, res) => {
   res.render('index', {
     css: ['style.css'],
+    firstname: req.user.firstname
   });
 }
