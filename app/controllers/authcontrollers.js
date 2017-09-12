@@ -6,6 +6,7 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
   res.render('login', { css2: ['login.css'] });
+  console.log('Cookies: ', req.cookies);
 }
 
 exports.logout = (req, res) => {

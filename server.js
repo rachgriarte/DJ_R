@@ -28,7 +28,7 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'app/views'));
 
 // Initialize cookieParser
-app.use(cookieParser('this'));
+app.use(cookieParser());
 
 // method-override to use with post actions in handlebars
 app.use(methodOverride('_method'));
