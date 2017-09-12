@@ -64,6 +64,7 @@ placeBets = function () {
 };
 
 dealHands = function () {
+ 
   $("#deal").on("click", function () {
     $("#hit").show();
     $("#stand").show();
@@ -73,6 +74,10 @@ dealHands = function () {
     dealCPU();
     blackjackCheck();
   });
+};
+
+hideHiddenDealerCard = function() {
+  $("#hiddenDealerCard img").hide();
 };
 
 dealPlayer = function () {
@@ -92,14 +97,22 @@ dealPlayer = function () {
 dealCPU = function () {
   dealerHandValue = 0;
   $("#dealerHand").empty();
-  for (let i = 27; i < dealerCount; i++) {
+  for (let iterator = 1; iterator<2; iterator++){
+  var hiddenDealerCard = $("<img height=120px width=80px id=hiddenDealerCard>");
+  hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
+ 
+ 
+  }
+  for (let i = 28; i < dealerCount; i++) {
     var cpuCardImage = $("<img height=120px width=80px>");
     cpuCardImage.attr("data-value", "value");
     cpuCardImage.attr("data-value", cardsValueArray[i]);
     cpuCardImage.attr("src", cardsImageArray[i]);
     $("#dealerHand").append(cpuCardImage);
     dealerHandValue += parseInt(cardsValueArray[i]);
+    
   }
+  
 
 };
 
@@ -107,8 +120,21 @@ playerHit = function () {
   $("#hit").on("click", function () {
     playerCount++;
     dealPlayer();
+    if (playerHandValue > 21) {
+      $("#hit").hide();
+      $("#stand").hide();
+      var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+      $(".buttons").append(gameResetButton);
+      $(".orange").on("click", function(){
+        $(".orange").hide();
+        gameReset();
+      }
+     
+  );}
+      
   });
-};
+  };
+
 
 dealerHit = function () {
   dealerCount++;
@@ -116,19 +142,43 @@ dealerHit = function () {
 };
 
 blackjackCheck = function () {
+  $("hiddenDealerCard").hide();
   if (playerHandValue === 21 && dealerHandValue === 21) {
+    $("#stand").hide();
+    $("#hit").hide();
     //update database
     //Message?
     console.log("Tied up");
-    gameReset();
+    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+    $(".buttons").append(gameResetButton);
+    $(".orange").on("click", function(){
+      $(".orange").hide();
+      gameReset();
+    });
+
   } else if (playerHandValue < 21 && dealerHandValue === 21) {
+    $("#stand").hide();
+    $("#hit").hide();
     //update database
     //Message?
     console.log("You Lose! Sad.");
-    gameReset();
-  } else if (playerHandValue === 21 & dealerHandValue < 21) {
+    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+    $(".buttons").append(gameResetButton);
+    $(".orange").on("click", function(){
+      $(".orange").hide();
+      gameReset();
+    });
+    
+  } else if (playerHandValue === 21 && dealerHandValue < 21) {
+    $("#stand").hide();
+    $("#hit").hide();
     console.log("Winner Winner chicken dinner!");
-    gameReset();
+    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+    $(".buttons").append(gameResetButton);
+    $(".orange").on("click", function(){
+      $(".orange").hide();
+      gameReset();
+    });
     //update database
     //Message?
   } 
@@ -140,8 +190,29 @@ $("#stand").on("click", function(){
   while (dealerHandValue < 17){
     dealerHit();
   }
+  if (dealerHandValue > 21){
+    $("#stand").hide();
+    $("#hit").hide();
+    console.log("Dealer Busted");
+    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+    $(".buttons").append(gameResetButton);
+    $(".orange").on("click", function(){
+      $(".orange").hide();
+      gameReset();
+    });
+    
+  } else {
+    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+    $(".buttons").append(gameResetButton);
+    $(".orange").on("click", function(){
+      $(".orange").hide();
+      gameReset();
+    });
+  
+  }
   //update database
 });
+
 
 
 gameReset = function () {
@@ -149,7 +220,9 @@ gameReset = function () {
   cardsValueArray = [];
   dealerCount = 28;
   playerCount = 2;
+  $("#gameResetButton").hide();
   $("#playerHand").empty();
+  $("#hiddenDealerCard").hide();
   getCards();
   placeBets();
   dealHands();
@@ -167,6 +240,7 @@ gameReset = function () {
 $(document).ready(function () {
   $("#hit").hide();
   $("#stand").hide();
+  $("#hiddenDealerCard").hide();
   placeBets();
   getCards();
   dealHands();
