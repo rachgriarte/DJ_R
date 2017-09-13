@@ -47,7 +47,7 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   User.associate = function(models) {
-    User.hasMany(models.Account, {
+    User.hasOne(models.Account, {
       onDelete: 'CASCADE'
     });
   }
