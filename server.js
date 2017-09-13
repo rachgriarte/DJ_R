@@ -70,7 +70,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var authRoute = require('./app/routes/auth.js')(app, passport);
 
 // Load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
+require('./app/config/passport/passport.js')(passport, models.User);
 
 //Sync Database
 models.sequelize.sync({ force: true }).then(() => {

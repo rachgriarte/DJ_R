@@ -1,47 +1,47 @@
 // Define user table in DB
-module.exports = (sequelize, Sequelize) => {
-  var User = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  var User = sequelize.define('User', {
     id: {
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     firstname: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       notEmpty: true
     },
     lastname: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       notEmpty: true
     },
     email: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
           isEmail: true
       }
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     win: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     loss: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     ties: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     totalBlackJacks: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     status: {
-      type: Sequelize.ENUM('active', 'inactive'),
+      type: DataTypes.ENUM('active', 'inactive'),
       defaultValue: 'active'
     }
   });

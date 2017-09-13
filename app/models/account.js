@@ -1,21 +1,21 @@
 // Define results table in DB
-module.exports = (sequelize, Sequelize) => {
-  var Account = sequelize.define('account', {
+module.exports = (sequelize, DataTypes) => {
+  var Account = sequelize.define('Account', {
     id: {
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
     },
     account_balance: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 5000
     },
     bet_amount: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     },
     win_amount: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     }
   });
