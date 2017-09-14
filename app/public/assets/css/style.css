@@ -242,3 +242,51 @@ a:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
     text-align: center;
 }
+/*/*Media Query*/
+/* ////////////// iPhone ///////////*/
+@media screen and (max-width: 960px){
+    #moving {
+        margin-top:45px;
+    }
+    /* Chips */
+    .chips {
+        position: fixed;
+        bottom: 30px;
+        left: 400px;
+     }
+    #oneDollarChip, #fiveDollarChip, #twentyFiveDollarChip, #oneHundredDollarChip, #fiveHundredDollarChip  {
+        position: relative;
+        width: 35px;
+        height: 35px;
+    }
+     /* wager box postioning */
+     #marquee img {
+        position: fixed;
+        bottom: 100px;
+        right: -60px;
+        z-index: -1;  
+        width: 280px;
+        height: 130px;
+    }
+    #betAmount {
+        font-size: 15pt;
+        color: blue;
+    }
+    #wagerBox > p {
+        font-size: 11pt;
+        margin-top: 110px;
+        margin-left: 400px;
+        position: fixed;
+    }
+    #wagerBox > img {
+        width: 280px;
+        height: 120px; 
+        left: 350px;
+    }
+     /* After the game is over  */
+	#playerBusted, #dealerBusted, #winner, #loser, #blackjack, #dealerBlackjack, #tie {
+        font-size: 50px;
+        top: 45%;
+        left: 50%;
+    }
+}
