@@ -13,6 +13,7 @@ const models = require('./app/models');
 const fs = require('fs');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
+const sequelize = require('sequelize');
 
 // Established port
 var PORT = process.env.PORT || 3000;
