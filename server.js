@@ -13,6 +13,7 @@ const models = require('./app/models');
 const fs = require('fs');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
+const connection = require('./app/config/connection.js');
 
 // Established port
 var PORT = process.env.PORT || 3000;
@@ -78,6 +79,19 @@ models.sequelize.sync({ force: true }).then(() => {
 }).catch((err) => {
   console.log(err, "Database sync error has occurred.")
 });
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+  connection.connect();
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Kihyun123',
+    database: 'better_db'
+  });
+  connection.connect();
+};
 
 // App listener
 app.listen(PORT, (err) => {
