@@ -22,8 +22,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Account.associate = function(models) {
     Account.belongsTo(models.User, {
+      through: models.User,
       foreignKey: {
-          allowNull: false,
+        allowNull: false
       }
     });
   }

@@ -8,6 +8,11 @@ var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db = {};
 
+if (config.use_env_variable) {
+    var sequelize = new Sequelize(process.env[config.use_env_variable]);
+} else {
+    var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 fs
    .readdirSync(__dirname)
