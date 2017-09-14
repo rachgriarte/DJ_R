@@ -17,24 +17,25 @@
   },
   "homepage": "https://github.com/rachgriarte/DJ_R#readme",
   "dependencies": {
+    "bcrypt-nodejs": "*",
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
     "cookie-parser": "*",
+    "dotenv": "*",
     "express": "*",
     "express-handlebars": "*",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
-    "bcrypt-nodejs": "*",
-    "dotenv": "*",
+    "fs-promise": "*",
+    "method-override": "*",
     "mysql": "*",
     "mysql2": "*",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
     "sequelize": "*",
-    "fs-promise": "*",
-    "method-override": "*"
+    "sequelize-heroku": "^1.0.0"
   }
 }
