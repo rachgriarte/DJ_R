@@ -159,80 +159,8 @@ a:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 
 .green { background:hsl(104,51%,62%); }
 .blue { background:hsl(176,59%,59%); }
 
-
-
-
-#playerBusted{
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-
-#playerBusted{
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-#dealerBusted{
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-#winner {
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-#loser{
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}#blackjack{
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-#dealerBlackjack {
-    position: fixed;
-    top: 40%;
-    left: 30%;
-    font-size: 100px;
-    font-family: 'Futura';
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
-    text-align: center;
-}
-#tie{
+/* After the game is over  */
+#playerBusted, #dealerBusted, #winner, #loser, #blackjack, #dealerBlackjack, #tie {
     position: fixed;
     top: 40%;
     left: 40%;
