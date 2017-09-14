@@ -1,5 +1,6 @@
 // NPM Dependencies
 const bCrypt = require('bcrypt-nodejs');
+const db = require('../../models');
 
 module.exports = (passport, user) => {
   var User = user;
@@ -43,11 +44,12 @@ module.exports = (passport, user) => {
             password: userPassword,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            username: req.body.username
+            username: req.body.username,
+            Account: [{}]
           };
           
           // Creates new user data in DB
-          User.create(data).then((newUser, created) => {
+          User.create(data, {include: [db.Account]}).then((newUser, created) => {
             if (!newUser) {
               return done(null, false);
             }
