@@ -4,7 +4,11 @@
   
          "username": "root",
   
+<<<<<<< HEAD
          "password": "Kihyun123",
+=======
+         "password": "@veryK1!",
+>>>>>>> b4bd8976fea5671ae2dc707a2249e79507faa0a3
   
          "database": "better_db",
   
