@@ -9,7 +9,7 @@ module.exports = (app) => {
     passport.authenticate('local-signin', {
       // Account balance starts with 5000 and everytime player hits bet amount, it subracts
 
-      If player wins. console.log("You won #betAmount");
+      // If player wins. console.log("You won #betAmount");
      
     //  else if player loses . console.log (account balance - bet amount). console.log("you lost #betAmount dollars!")
      

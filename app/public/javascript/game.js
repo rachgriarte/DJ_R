@@ -61,7 +61,7 @@ placeBets = function () {
   };
 };
 //Shows the total amount of balance in account while placing bets
-let totalAccountBalance = accountBalance-placeBets;
+// let totalAccountBalance = accountBalance-placeBets;
 dealHands = function () {
  
   $("#deal").on("click", function () {
@@ -307,7 +307,7 @@ $(document).ready(function () {
   $("#dealerBlackjack").hide();
   $("#tie").hide();
   $("#hiddenDealerCard").hide();
-  totalAccountBalance(); //total amount
+  // totalAccountBalance(); //total amount
   placeBets();
   getCards();
   dealHands();
