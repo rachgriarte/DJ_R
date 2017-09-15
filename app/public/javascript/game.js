@@ -236,6 +236,15 @@ $("#stand").on("click", function(){
     $.post("/route", sendData, function(recieveData) {
       // This code runs when the server respond
     });
+    var winAdded = betmoney + accountbalance;
+    var loseSubtract = betmoney - accountbalance;
+
+    if the user won {
+      res.render("winAdded");
+    }
+    if the user loser {
+      res.render("loseSubtract");
+    }
   }
 });
 
