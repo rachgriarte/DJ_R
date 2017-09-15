@@ -5,7 +5,6 @@ let dealerCount = 28;
 let playerHandValue;
 let dealerHandValue;
 let newHandURL = "https://deckofcardsapi.com/api/deck/new/draw/?count=52";
-let playerStand, playerBusted, dealerBusted, winner, loser, blackjack, dealerBlackJack = false;
 
 
 placeBets = function () {
@@ -37,7 +36,6 @@ placeBets = function () {
     $("#betAmount").data("value") === betAmount;
   });
 
-
   getCards = function () {
     $.ajax({
       url: newHandURL,
@@ -63,7 +61,7 @@ placeBets = function () {
 };
 
 dealHands = function () {
- 
+
   $("#deal").on("click", function () {
     $("#hit").show();
     $("#stand").show();
@@ -75,7 +73,7 @@ dealHands = function () {
   });
 };
 
-hideHiddenDealerCard = function() {
+hideHiddenDealerCard = function () {
   $("#hiddenDealerCard img").hide();
 };
 
@@ -92,15 +90,13 @@ dealPlayer = function () {
   }
 };
 
-
 dealCPU = function () {
   dealerHandValue = 0;
   $("#dealerHand").empty();
-  for (let iterator = 1; iterator<2; iterator++){
-  var hiddenDealerCard = $("<img height=120px width=80px id=hiddenDealerCard>");
-  hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
- 
- 
+  for (let iterator = 1; iterator < 2; iterator++) {
+    var hiddenDealerCard = $("<img height=120px width=80px id=hiddenDealerCard>");
+    hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
+
   }
   for (let i = 28; i < dealerCount; i++) {
     var cpuCardImage = $("<img height=120px width=80px>");
@@ -109,9 +105,8 @@ dealCPU = function () {
     cpuCardImage.attr("src", cardsImageArray[i]);
     $("#dealerHand").append(cpuCardImage);
     dealerHandValue += parseInt(cardsValueArray[i]);
-    
+
   }
-  
 
 };
 
@@ -125,17 +120,17 @@ playerHit = function () {
       $("#stand").hide();
       var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
       $(".buttons").append(gameResetButton);
-      $(".orange").on("click", function(){
-        $(".orange").hide();
-        
-        gameReset();
-      }
-     
-  );}
-      
-  });
-  };
+      $(".orange").on("click", function () {
+          $(".orange").hide();
 
+          gameReset();
+        }
+
+      );
+    }
+
+  });
+};
 
 dealerHit = function () {
   dealerCount++;
@@ -153,7 +148,7 @@ blackjackCheck = function () {
     //Message?
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
       gameReset();
     });
@@ -167,54 +162,53 @@ blackjackCheck = function () {
     console.log("You Lose! Sad.");
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
       gameReset();
     });
-    
+
   } else if (playerHandValue === 21 && dealerHandValue < 21) {
     $("#stand").hide();
     $("#hit").hide();
     $("#blackjack").fadeIn(2000).fadeOut(2000);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
-      
+
       gameReset();
-      
 
     });
     //update database
     //Message?
-  } else if (playerHandValue === 22 || dealerHandValue === 22){
+  } else if (playerHandValue === 22 || dealerHandValue === 22) {
     $("#tie").fadeIn(2000).fadeOut(2000);
     // tie();
   }
 };
 
-$("#stand").on("click", function(){
+$("#stand").on("click", function () {
   $("#stand").hide();
   $("#hit").hide();
-  while (dealerHandValue < 17){
+  while (dealerHandValue < 17) {
     dealerHit();
   }
-  if (dealerHandValue > 21){
+  if (dealerHandValue > 21) {
     $("#stand").hide();
     $("#hit").hide();
     $("#dealerBusted").fadeIn(2000).fadeOut(2000);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
       gameReset();
     });
-    
-  } else if (playerHandValue > dealerHandValue){
+
+  } else if (playerHandValue > dealerHandValue) {
     $("#winner").fadeIn(2000).fadeOut(2000);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
       gameReset();
     });
@@ -222,7 +216,7 @@ $("#stand").on("click", function(){
     $("#loser").fadeIn(2000).fadeOut(2000);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $(".orange").on("click", function () {
       $(".orange").hide();
       gameReset();
     });
@@ -230,15 +224,14 @@ $("#stand").on("click", function(){
     $("#tie").fadeIn(2000).fadeOut(2000);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
-      $(".orange").hide();
-      gameReset();
-  }
-  //update database
+    $(".orange").on("click", function () {
+        $(".orange").hide();
+        gameReset();
+      }
+      //update database
     );
   }
 });
-
 
 gameReset = function () {
   cardsImageArray = [];
@@ -268,15 +261,13 @@ gameReset = function () {
   $("#deal").show();
 };
 
-
 // if (dealerBusted) {
 //   $("#dealerBusted").hide();
 //   $("#dealerBusted").fadeIn(2000).fadeOut(2000);
 // }
 
 if (winner) {
-  
- 
+
 }
 
 if (loser) {
@@ -293,7 +284,6 @@ if (dealerBlackJack) {
   $("#playerBusted").hide();
   $("#playerBusted").fadeIn(2000).fadeOut(2000);
 }
-
 
 $(document).ready(function () {
   $("#hit").hide();
@@ -312,7 +302,5 @@ $(document).ready(function () {
   dealHands();
   playerHit();
   dealerHit();
-  
 
 });
-
