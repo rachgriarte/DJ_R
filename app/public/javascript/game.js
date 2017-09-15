@@ -223,19 +223,10 @@ blackjackCheck = () => {
     //update database
     //Message?
     console.log("You Lose! Sad.");
-<<<<<<< HEAD
     //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     //$(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     });
@@ -245,19 +236,10 @@ blackjackCheck = () => {
     $("#hit").hide();
 
     $("#blackjack").fadeIn(2000).fadeOut(2000);
-<<<<<<< HEAD
     //let gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     //$(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       
       gameReset();
@@ -284,89 +266,42 @@ $("#stand").on("click", () => {
     $("#stand").hide();
 
     $("#hit").hide();
-<<<<<<< HEAD
     //$("#dealerBusted").fadeIn(2000).fadeOut(2000);
     //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     //$(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-
-    $("#dealerBusted").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     });
   } else if (playerHandValue > dealerHandValue){
-<<<<<<< HEAD
     //$("#winner").fadeIn(2000).fadeOut(2000);
     //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     // $(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-    $("#winner").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     });
 
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else if (dealerHandValue > playerHandValue) {
-<<<<<<< HEAD
     //$("#loser").fadeIn(2000).fadeOut(2000);
     // var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     // $(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-    $("#loser").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     });
 
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else {
-<<<<<<< HEAD
     //$("#tie").fadeIn(2000).fadeOut(2000);
     // var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     // $(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-    $("#tie").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     }
