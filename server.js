@@ -69,6 +69,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
 
+var otherRoute = require('./app/routes/routetest.js')(app, models);
+
 // Load passport strategies
 require('./app/config/passport/passport.js')(passport, models.User);
 

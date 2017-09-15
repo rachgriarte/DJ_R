@@ -81,7 +81,6 @@ body {
 #dealerFaceCard img{
     display: inline-block;
     margin: 30px auto;
-    border: 1px solid pink;
     height: 120px;
     width: 90px;
     margin: 30px 2px 0 0;
@@ -92,7 +91,7 @@ body {
     margin: 0 auto;
     height: 120px;
     width: 90px;
-    background-image: url("../img/cardback.png");
+    background-image: url("../img/cardBack.png");
     background-repeat: no-repeat;
     background-size: contain;
 } 
