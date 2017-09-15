@@ -84,12 +84,8 @@ dealPlayer = function () {
   playerHandValue = 0;
   $("#playerHand").empty();
   for (let i = 0; i < playerCount; i++) {
-<<<<<<< HEAD
     var playerCardImage = $("<img height='120px' width='80px'>");
     playerCardImage.attr("data-value", "value");
-=======
-    var playerCardImage = $("<img height=120px width=80px>");
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
     playerCardImage.attr("data-value", cardsValueArray[i]);
     playerCardImage.attr("src", cardsImageArray[i]);
     $("#playerHand").append(playerCardImage);
@@ -102,32 +98,16 @@ dealCPU = () => {
   dealerHandValue = 0;
 
   $("#dealerHand").empty();
-<<<<<<< HEAD
   for (let iterator = 1; iterator<2; iterator++){
   var hiddenDealerCard = $("<img height='120px' width='80px' id='hiddenDealerCard'>");
   hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
  
  
-=======
-
-  var hiddenDealerCard = $('<img height="120px" width="80px" id="hiddenDealerCard">');
-
-  for (let iterator = 1; iterator < 2; iterator++){
-
-    hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
-
-    $('#dealerHand').append(hiddenDealerCard);
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
   }
 
   for (let i = 28; i < dealerCount; i++) {
-<<<<<<< HEAD
     var cpuCardImage = $("<img height='120px' width='80px'>");
     cpuCardImage.attr("data-value", "value");
-=======
-    hiddenDealerCard.attr("data-value", cardsValueArray[cardsValueArray.length - 1]);
-    var cpuCardImage = $('<img height=120px width=80px id="showDealCard">');
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
     cpuCardImage.attr("data-value", cardsValueArray[i]);
     cpuCardImage.attr("src", cardsImageArray[i]);
     $("#dealerHand").append(cpuCardImage);
@@ -144,16 +124,10 @@ playerHit = () => {
     dealPlayer();
 
     if (playerHandValue > 21) {
-<<<<<<< HEAD
       //$("#playerBusted").fadeIn(2000).fadeOut(2000);
-=======
-      $("#playerBusted").fadeIn(2000).fadeOut(2000);
-
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $("#hit").hide();
 
       $("#stand").hide();
-<<<<<<< HEAD
       //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
       //$(".buttons").append(gameResetButton);
       $('.orange').show();
@@ -164,19 +138,6 @@ playerHit = () => {
      
   );}
       
-=======
-
-      var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-      $(".buttons").append(gameResetButton);
-
-      $(".orange").on("click", () => {
-        $(".orange").hide();
-        
-        gameReset();
-      });
-    }
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
   });
 };
 
@@ -198,18 +159,10 @@ blackjackCheck = () => {
 
     //update database
     //Message?
-<<<<<<< HEAD
     //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
     //$(".buttons").append(gameResetButton);
     $('.orange').show();
     $(".orange").on("click", function(){
-=======
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    $(".buttons").append(gameResetButton);
-
-    $(".orange").on("click", () => {
->>>>>>> 75a238294bcf0f1ebacf149e6751e7bf1323622f
       $(".orange").hide();
       gameReset();
     });
