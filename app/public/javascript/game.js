@@ -60,8 +60,6 @@ placeBets = function () {
     });
   };
 };
-//Shows the total amount of balance in account while placing bets
-// let totalAccountBalance = accountBalance-placeBets;
 dealHands = function () {
  
   $("#deal").on("click", function () {
@@ -235,7 +233,9 @@ $("#stand").on("click", function(){
       gameReset();
   }
   //update database
-    );
+    $.post("/route", sendData, function(recieveData) {
+      // This code runs when the server respond
+    });
   }
 });
 
