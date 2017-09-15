@@ -12,28 +12,28 @@ placeBets = function () {
   let betAmount = 0;
   $("#oneDollarChip").on("click", function () {
     betAmount += $(this).data("value");
-    $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
+    $("#betAmount").html("<h2 id='betAmount' data-value='" + betAmount + "'> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
 
   });
   $("#fiveDollarChip").on("click", function () {
     betAmount += $(this).data("value");
-    $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
+    $("#betAmount").html("<h2 id='betAmount' data-value='" + betAmount + "'> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
   });
   $("#twentyFiveDollarChip").on("click", function () {
     betAmount += $(this).data("value");
-    $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
+    $("#betAmount").html("<h2 id='betAmount' data-value='" + betAmount + "'> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
   });
   $("#oneHundredDollarChip").on("click", function () {
     betAmount += $(this).data("value");
-    $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
+    $("#betAmount").html("<h2 id='betAmount' data-value='" + betAmount + "'> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
   });
   $("#fiveHundredDollarChip").on("click", function () {
     betAmount += $(this).data("value");
-    $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
+    $("#betAmount").html("<h2 id='betAmount' data-value='" + betAmount + "'> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
   });
 
@@ -83,7 +83,7 @@ dealPlayer = function () {
   playerHandValue = 0;
   $("#playerHand").empty();
   for (let i = 0; i < playerCount; i++) {
-    var playerCardImage = $("<img height=120px width=80px>");
+    var playerCardImage = $("<img height='120px' width='80px'>");
     playerCardImage.attr("data-value", "value");
     playerCardImage.attr("data-value", cardsValueArray[i]);
     playerCardImage.attr("src", cardsImageArray[i]);
@@ -97,13 +97,13 @@ dealCPU = function () {
   dealerHandValue = 0;
   $("#dealerHand").empty();
   for (let iterator = 1; iterator<2; iterator++){
-  var hiddenDealerCard = $("<img height=120px width=80px id=hiddenDealerCard>");
+  var hiddenDealerCard = $("<img height='120px' width='80px' id='hiddenDealerCard'>");
   hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
  
  
   }
   for (let i = 28; i < dealerCount; i++) {
-    var cpuCardImage = $("<img height=120px width=80px>");
+    var cpuCardImage = $("<img height='120px' width='80px'>");
     cpuCardImage.attr("data-value", "value");
     cpuCardImage.attr("data-value", cardsValueArray[i]);
     cpuCardImage.attr("src", cardsImageArray[i]);
@@ -120,15 +120,15 @@ playerHit = function () {
     playerCount++;
     dealPlayer();
     if (playerHandValue > 21) {
-      $("#playerBusted").fadeIn(2000).fadeOut(2000);
+      //$("#playerBusted").fadeIn(2000).fadeOut(2000);
       $("#hit").hide();
       $("#stand").hide();
-      var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-      $(".buttons").append(gameResetButton);
+      //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+      //$(".buttons").append(gameResetButton);
+      $('.orange').show();
       $(".orange").on("click", function(){
-        $(".orange").hide();
-        
         gameReset();
+        $(".orange").hide();
       }
      
   );}
@@ -151,8 +151,9 @@ blackjackCheck = function () {
     $("#tie").fadeIn(2000).fadeOut(2000);
     //update database
     //Message?
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    //$(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
@@ -165,8 +166,9 @@ blackjackCheck = function () {
     //update database
     //Message?
     console.log("You Lose! Sad.");
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    //$(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
@@ -176,8 +178,9 @@ blackjackCheck = function () {
     $("#stand").hide();
     $("#hit").hide();
     $("#blackjack").fadeIn(2000).fadeOut(2000);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //let gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    //$(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       
@@ -202,34 +205,38 @@ $("#stand").on("click", function(){
   if (dealerHandValue > 21){
     $("#stand").hide();
     $("#hit").hide();
-    $("#dealerBusted").fadeIn(2000).fadeOut(2000);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //$("#dealerBusted").fadeIn(2000).fadeOut(2000);
+    //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    //$(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
     });
     
   } else if (playerHandValue > dealerHandValue){
-    $("#winner").fadeIn(2000).fadeOut(2000);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //$("#winner").fadeIn(2000).fadeOut(2000);
+    //var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    // $(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
     });
   } else if (dealerHandValue > playerHandValue) {
-    $("#loser").fadeIn(2000).fadeOut(2000);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //$("#loser").fadeIn(2000).fadeOut(2000);
+    // var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    // $(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
     });
   } else {
-    $("#tie").fadeIn(2000).fadeOut(2000);
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-    $(".buttons").append(gameResetButton);
+    //$("#tie").fadeIn(2000).fadeOut(2000);
+    // var gameResetButton = $("<button id='gameResetButton' class='orange'>Play Again</button>");
+    // $(".buttons").append(gameResetButton);
+    $('.orange').show();
     $(".orange").on("click", function(){
       $(".orange").hide();
       gameReset();
