@@ -6,6 +6,7 @@ let playerHandValue;
 let dealerHandValue;
 let newHandURL = "https://deckofcardsapi.com/api/deck/new/draw/?count=52";
 let playerStand, playerBusted, dealerBusted, winner, loser, blackjack, dealerBlackJack = false;
+let email = $("#hiddenEmail").value // doublecheck
 
 
 placeBets = function () {
@@ -42,7 +43,7 @@ placeBets = function () {
     $.ajax({
       url: newHandURL,
       method: "GET",
-      data: "response",
+      data: "response",// data: { data: {email:'aaa', amount: '500'}}
       dataType: "JSON"
     }).done(function (response) {
       for (let i = 0; i < response.cards.length; i++) {
@@ -75,16 +76,15 @@ dealHands = function () {
   });
 };
 
-hideHiddenDealerCard = function() {
-  $("#hiddenDealerCard img").hide();
-};
+// hideHiddenDealerCard = function() {
+//   $("#hiddenDealerCard img").hide();
+// };
 
 dealPlayer = function () {
   playerHandValue = 0;
   $("#playerHand").empty();
   for (let i = 0; i < playerCount; i++) {
     var playerCardImage = $("<img height=120px width=80px>");
-    playerCardImage.attr("data-value", "value");
     playerCardImage.attr("data-value", cardsValueArray[i]);
     playerCardImage.attr("src", cardsImageArray[i]);
     $("#playerHand").append(playerCardImage);
@@ -93,48 +93,57 @@ dealPlayer = function () {
 };
 
 
-dealCPU = function () {
+dealCPU = () => {
   dealerHandValue = 0;
+
   $("#dealerHand").empty();
-  for (let iterator = 1; iterator<2; iterator++){
-  var hiddenDealerCard = $("<img height=120px width=80px id=hiddenDealerCard>");
-  hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
- 
- 
+
+  var hiddenDealerCard = $('<img height="120px" width="80px" id="hiddenDealerCard">');
+
+  for (let iterator = 1; iterator < 2; iterator++){
+
+    hiddenDealerCard.attr("src", "/assets/img/cardBack.png");
+
+    $('#dealerHand').append(hiddenDealerCard);
   }
+
   for (let i = 28; i < dealerCount; i++) {
-    var cpuCardImage = $("<img height=120px width=80px>");
-    cpuCardImage.attr("data-value", "value");
+    hiddenDealerCard.attr("data-value", cardsValueArray[cardsValueArray.length - 1]);
+    var cpuCardImage = $('<img height=120px width=80px id="showDealCard">');
     cpuCardImage.attr("data-value", cardsValueArray[i]);
     cpuCardImage.attr("src", cardsImageArray[i]);
     $("#dealerHand").append(cpuCardImage);
     dealerHandValue += parseInt(cardsValueArray[i]);
-    
   }
-  
 
+  dealerHandValue += parseInt(cardsValueArray[cardsValueArray.length - 1]);
 };
 
-playerHit = function () {
-  $("#hit").on("click", function () {
+playerHit = () => {
+  $("#hit").on("click", () => {
     playerCount++;
+
     dealPlayer();
+
     if (playerHandValue > 21) {
       $("#playerBusted").fadeIn(2000).fadeOut(2000);
+
       $("#hit").hide();
+
       $("#stand").hide();
+
       var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
       $(".buttons").append(gameResetButton);
-      $(".orange").on("click", function(){
+
+      $(".orange").on("click", () => {
         $(".orange").hide();
         
         gameReset();
-      }
-     
-  );}
-      
+      });
+    }
   });
-  };
+};
 
 
 dealerHit = function () {
@@ -142,105 +151,144 @@ dealerHit = function () {
   dealCPU();
 };
 
-blackjackCheck = function () {
-
+blackjackCheck = () => {
   $("hiddenDealerCard").hide();
+
   if (playerHandValue === 21 && dealerHandValue === 21) {
     $("#stand").hide();
+
     $("#hit").hide();
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $("#tie").fadeIn(2000).fadeOut(2000);
+
     //update database
     //Message?
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
-
   } else if (playerHandValue < 21 && dealerHandValue === 21) {
     $("#stand").hide();
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $("#hit").hide();
+
     $("#dealerBlackjack").fadeIn(2000).fadeOut(2000);
+
     //update database
     //Message?
     console.log("You Lose! Sad.");
+
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
-    
   } else if (playerHandValue === 21 && dealerHandValue < 21) {
     $("#stand").hide();
+
     $("#hit").hide();
+
     $("#blackjack").fadeIn(2000).fadeOut(2000);
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       
       gameReset();
-      
-
     });
     //update database
     //Message?
   } else if (playerHandValue === 22 || dealerHandValue === 22){
     $("#tie").fadeIn(2000).fadeOut(2000);
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     // tie();
   }
 };
 
-$("#stand").on("click", function(){
+$("#stand").on("click", () => {
+  $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   $("#stand").hide();
   $("#hit").hide();
+
   while (dealerHandValue < 17){
     dealerHit();
   }
+
   if (dealerHandValue > 21){
     $("#stand").hide();
+
     $("#hit").hide();
+
     $("#dealerBusted").fadeIn(2000).fadeOut(2000);
+
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
-    
   } else if (playerHandValue > dealerHandValue){
     $("#winner").fadeIn(2000).fadeOut(2000);
+
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
+
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else if (dealerHandValue > playerHandValue) {
     $("#loser").fadeIn(2000).fadeOut(2000);
+
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
+
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else {
     $("#tie").fadeIn(2000).fadeOut(2000);
+
     var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
+
     $(".buttons").append(gameResetButton);
-    $(".orange").on("click", function(){
+
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
+
+    $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
-  }
+    }
   //update database
     );
   }
 });
 
 
-gameReset = function () {
+gameReset = () => {
   cardsImageArray = [];
   cardsValueArray = [];
   dealerCount = 28;
@@ -295,7 +343,7 @@ if (dealerBlackJack) {
 }
 
 
-$(document).ready(function () {
+$(document).ready(() => {
   $("#hit").hide();
   $("#stand").hide();
   $("#dealerBusted").hide();
@@ -312,7 +360,4 @@ $(document).ready(function () {
   dealHands();
   playerHit();
   dealerHit();
-  
-
 });
-
