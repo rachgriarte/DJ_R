@@ -6,6 +6,7 @@ let playerHandValue;
 let dealerHandValue;
 let newHandURL = "https://deckofcardsapi.com/api/deck/new/draw/?count=52";
 let playerStand, playerBusted, dealerBusted, winner, loser, blackjack, dealerBlackJack = false;
+let accountBalance = 5000;
 
 
 placeBets = function () {
@@ -14,7 +15,6 @@ placeBets = function () {
     betAmount += $(this).data("value");
     $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
-
   });
   $("#fiveDollarChip").on("click", function () {
     betAmount += $(this).data("value");
@@ -36,7 +36,6 @@ placeBets = function () {
     $("#betAmount").html("<h2 id='betAmount' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
   });
-
 
   getCards = function () {
     $.ajax({
@@ -61,7 +60,8 @@ placeBets = function () {
     });
   };
 };
-
+//Shows the total amount of balance in account while placing bets
+let totalAccountBalance = accountBalance-placeBets;
 dealHands = function () {
  
   $("#deal").on("click", function () {
@@ -307,12 +307,11 @@ $(document).ready(function () {
   $("#dealerBlackjack").hide();
   $("#tie").hide();
   $("#hiddenDealerCard").hide();
+  totalAccountBalance(); //total amount
   placeBets();
   getCards();
   dealHands();
   playerHit();
   dealerHit();
-  
-
 });
 
