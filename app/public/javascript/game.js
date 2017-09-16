@@ -155,6 +155,7 @@ dealerHit = function () {
 
 blackjackCheck = () => {
   $("hiddenDealerCard").hide();
+  var betAmount = parseInt(total.value);
 
   if (playerHandValue === 21 && dealerHandValue === 21) {
     $("#stand").hide();
