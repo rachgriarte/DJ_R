@@ -57,7 +57,7 @@ body {
 #accountBalance {
     position: fixed;
     color: red;
-    top: 140px;
+    top: 130px;
     right: 110px;
 }
 #dealerHand {
@@ -150,7 +150,7 @@ a:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 
     position: fixed;
     top: 30%;
     left: 30%;
-    font-size: 100px;
+    font-size: 80px;
     font-family: ‘Futura’;
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
