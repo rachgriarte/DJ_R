@@ -10,4 +10,4 @@ Instructions:
 
 Hope you enjoy!
 
-- The BETter team
+> The BETter team
