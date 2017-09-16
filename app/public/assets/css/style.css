@@ -52,16 +52,19 @@ body {
     left: 100px;
 }
 #marquee img {
-    /* padding-right: 10%; */
-    position:fixed;
     z-index: -1;
     top: 60px;
 }
-#accountBalance {
-    position: fixed;
+.containMarquee {
+    position: relative;
+}
+.containMarquee p {
+    position: absolute;
     color: red;
-    top: 130px;
-    right: 110px;
+    top: 85px;
+    /* right: 100px; */
+    left: 90px;
+    width: 100%;
 }
 #dealerHand {
     height: 120px;
@@ -108,7 +111,7 @@ body {
     margin-top: 80px;
 }
 .bottom-row {
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 #wagerBox {
     position: fixed;

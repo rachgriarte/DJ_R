@@ -61,6 +61,8 @@
         {{!-- Logout --}}
           <li class="nav-item">
             <a class="nav-link text-white">You are logged in as: {{firstname}}</a>
+            
+            {{!-- Hidden fields --}}
             <input type="hidden" value={{email}} id="hiddenEmail"> 
             <input type="hidden" value={{userid}} id="hiddenId">
           </li>

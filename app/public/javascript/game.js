@@ -5,7 +5,6 @@ let dealerCount = 28;
 let playerHandValue;
 var total;
 var balance = 5000;
-var winAmount;
 let dealerHandValue;
 let newHandURL = "https://deckofcardsapi.com/api/deck/new/draw/?count=52";
 let playerStand, playerBusted, dealerBusted, winner, loser, blackjack, dealerBlackJack = false;
@@ -17,7 +16,6 @@ placeBets = function () {
     betAmount += $(this).data("value");
     $("#betAmount").html("<h2 id='bet' data-value=" + betAmount + "> Bet Amount: $" + betAmount + "</h2>");
     $("#betAmount").data("value") === betAmount;
-
   });
   $("#fiveDollarChip").on("click", function () {
     betAmount += $(this).data("value");
@@ -129,21 +127,16 @@ playerHit = () => {
 
     if (playerHandValue > 21) {
       $("#playerBusted").fadeIn(2000).fadeOut(2000);
-
       $("#hit").hide();
       balance = balance - betAmount;
-      console.log(balance);
-
       $("#stand").hide();
-
       $(".orange").show();
-
       $(".orange").on("click", () => {
         $(".orange").hide();
-        $("#amount").text(balance);
         gameReset();
       });
     }
+    $("#amount").text(balance);
   });
 };
 
@@ -155,20 +148,15 @@ dealerHit = function () {
 
 blackjackCheck = () => {
   $("hiddenDealerCard").hide();
+  total = $("#bet").data();
   var betAmount = parseInt(total.value);
 
   if (playerHandValue === 21 && dealerHandValue === 21) {
     $("#stand").hide();
-
     $("#hit").hide();
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $("#tie").fadeIn(2000).fadeOut(2000);
-
-    //update database
-    //Message?
-
     $(".orange").show();
-
     $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
@@ -177,11 +165,10 @@ blackjackCheck = () => {
     $("#stand").hide();
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $("#hit").hide();
+    console.log("previous bal: " + balance);
+    console.log("previous betAmo: " + betAmount);
     balance = balance - betAmount;
     $("#dealerBlackjack").fadeIn(2000).fadeOut(2000);
-
-    console.log("You Lose! Sad.");
-
     $(".orange").show();
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $(".orange").on("click", () => {
@@ -190,31 +177,29 @@ blackjackCheck = () => {
     });
   } else if (playerHandValue === 21 && dealerHandValue < 21) {
     $("#stand").hide();
-
     $("#hit").hide();
-    balance = balance + winAmount * 2;
+    console.log("previous bal: " + balance);
+    console.log("previous betAmo: " + betAmount);
+    balance = balance + (betAmount * 2);
     $("#blackjack").fadeIn(2000).fadeOut(2000);
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
     $(".orange").show();
-
+    $(".orange").on("click", () => {
+      $(".orange").hide();
+      gameReset();
+    });
+  } else if (playerHandValue === 22 || dealerHandValue === 22) {
+    $("#tie").fadeIn(2000).fadeOut(2000);
+    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
+    $(".orange").show();
+    
     $(".orange").on("click", () => {
       $(".orange").hide();
       
       gameReset();
     });
-    //update database
-    //Message?
-  } else if (playerHandValue === 22 || dealerHandValue === 22){
-    $("#tie").fadeIn(2000).fadeOut(2000);
-    $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-    $(".orange").show();
-    
-        $(".orange").on("click", () => {
-          $(".orange").hide();
-          
-          gameReset();
-        });
   }
+  $("#amount").text(balance);
 };
 
 $("#stand").on("click", () => {
@@ -242,74 +227,42 @@ $("#stand").on("click", () => {
 
   if (dealerHandValue > 21){
     $("#stand").hide();
-
     $("#hit").hide();
-
     balance = betAmount * 2 + balance;
-
     $("#dealerBusted").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    // $(".buttons").append(gameResetButton);
     $(".orange").show();
-
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
     $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
   } else if (playerHandValue > dealerHandValue){
     $("#winner").fadeIn(2000).fadeOut(2000);
-
     balance = betAmount * 2 + balance;
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    // $(".buttons").append(gameResetButton);
     $(".orange").show();
-
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
     $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
-
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else if (dealerHandValue > playerHandValue) {
     $("#loser").fadeIn(2000).fadeOut(2000);
-
     balance = balance - betAmount;
-    
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    // $(".buttons").append(gameResetButton);
     $(".orange").show();
-
     $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
     });
-
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
   } else {
     $("#tie").fadeIn(2000).fadeOut(2000);
-
-    var gameResetButton = $("<button id=gameResetButton class=orange>Play Again</button>");
-
-    // $(".buttons").append(gameResetButton);
     $(".orange").show();
-
     $("#hiddenDealerCard").attr("src", cardsImageArray[cardsValueArray.length - 1]);
-
     $(".orange").on("click", () => {
       $(".orange").hide();
       gameReset();
-    }
-  //update database
-    );
+    });
   }
 
   var newbalance = {
@@ -371,7 +324,6 @@ if (dealerBlackJack) {
   $("#playerBusted").hide();
   $("#playerBusted").fadeIn(2000).fadeOut(2000);
 }
-
 
 $(document).ready(() => {
   $("#hit").hide();
