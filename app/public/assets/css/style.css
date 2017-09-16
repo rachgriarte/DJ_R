@@ -48,6 +48,9 @@ body {
     padding-right: 15px;
     padding-left: 15px;
 }
+#buttons1 {
+    left: 100px;
+}
 #marquee img {
     /* padding-right: 10%; */
     position:fixed;
@@ -149,7 +152,7 @@ a:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 
 #playerBusted, #dealerBusted, #winner, #loser, #blackjack, #dealerBlackjack, #tie {
     position: fixed;
     top: 30%;
-    left: 30%;
+    left: 40%;
     font-size: 80px;
     font-family: ‘Futura’;
     color: #fff;
@@ -206,8 +209,11 @@ a:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 
     }
      /* After the game is over  */
     #playerBusted, #dealerBusted, #winner, #loser, #blackjack, #dealerBlackjack, #tie {
-        font-size: 40px;
-        bottom: 90%;
-        left: 30%;
+        font-size: 50px;
+        bottom: 80%;
+        left: 35%;
+    }
+    #buttons1 {
+        left: 10px;
     }
 }
