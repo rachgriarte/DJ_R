@@ -6,7 +6,7 @@ var expect = require("chai").expect;
 describe("BETter", function() {
   // The default tests in mocha is 2 seconds.
   // Extending it to 30 seconds to have time to load the pages
-  var login = "#nav-link";
+  var login = "#signin";
 
   this.timeout(30000);
   it("should require me to login", function(done) {
@@ -36,18 +36,18 @@ describe("BETter", function() {
       // Click the login button.
       .click(login)
       // Wait for the login input
-      .wait("#user_login")
+      .wait("#email")
       // Actually log in
-      .type("#user_login", "email")
-      .type("#user_password", "password")
-      .click("userPage")
+      .type("#email", "email@email.com")
+      .type("#password", "your password")
+      .click("submit")
       // Evaluate the following selector
       .evaluate(function() {
         // Assert the catalog exists
         return document.URL
       })
       .then(function(catalog) {
-        expect(catalog).to.not.equal(userPage);
+        expect(catalog).to.not.equal("http://localhost:3000");
         done();
       });
   });
