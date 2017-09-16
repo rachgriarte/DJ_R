@@ -1,5 +1,3 @@
-
-
 // Route Exports
 module.exports = (app, models) => {
   // app.get('/register', authController.register);
@@ -25,18 +23,30 @@ module.exports = (app, models) => {
   //     successMessage: 'Welcome to the BETter App!',
   //   }));
 
-
-    app.post('/update', function(req, res) {
-      var obj = req.body;
-
-      var amount = obj.money;
-
-      var userEmail = obj.email;
-
-
-
-      // models.Account.update{
-
-      // }
+  // Get route to display user account information
+  app.get('/api/account/:id', (req, res) => {
+    // Searches the Account table to find user
+    models.Account.findOne({
+      where: {
+        UserId: req.params.id
+      },
+      include: [models.User]
+    }).then((dbAccount) => {
+      res.json(dbAccount);
     });
+  })
+
+  app.get('/update', (req, res) => {
+    var userId = req.params.id;
+    
+    var userObj = req.user;
+    // var accBal = obj.account_balance;
+    console.log(req.body);
+    console.log(req.body.userid);
+    console.log(userObj);
+
+    // models.Account.update({
+
+    // })
+  });
 }

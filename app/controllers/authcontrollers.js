@@ -19,6 +19,7 @@ exports.dashboard = (req, res) => {
   res.render('index', {
     css: ['style.css'],
     firstname: req.user.firstname,
-    email: req.user.email
+    email: req.user.email,
+    userid: req.user.id
   });
 }

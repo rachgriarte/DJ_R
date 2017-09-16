@@ -35,7 +35,9 @@ app.use(methodOverride('_method'));
 
 // BodyParser Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+// app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Middleware for Express sessions
 app.use(session({
@@ -68,8 +70,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
-
-var otherRoute = require('./app/routes/routetest.js')(app, models);
+var accountRoute = require('./app/routes/account-route.js')(app, models);
 
 // Load passport strategies
 require('./app/config/passport/passport.js')(passport, models.User);
