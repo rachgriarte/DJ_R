@@ -20,6 +20,6 @@ exports.dashboard = (req, res) => {
     css: ['style.css'],
     firstname: req.user.firstname,
     email: req.user.email,
-    userid: req.user.id
+    userid: req.user.id,
   });
 }

@@ -1,52 +1,36 @@
 // Route Exports
 module.exports = (app, models) => {
-  // app.get('/register', authController.register);
-
-  // app.get('/login', authController.login);
-
-  // app.post('/register', 
-  //   passport.authenticate('local-signup', {
-  //     successRedirect: '/',
-  //     failureRedirect: '/register',
-  //     failureFlash: true
-  //   }));
-
-  // app.get('/logout', authController.logout);
-
-  // app.get('/', isLoggedIn, authController.dashboard);
-  
-  // app.post('/login', 
-  //   passport.authenticate('local-signin', {
-  //     successRedirect: '/',
-  //     failureRedirect: '/login',
-  //     failureFlash: true,
-  //     successMessage: 'Welcome to the BETter App!',
-  //   }));
-
   // Get route to display user account information
-  app.get('/api/account/:id', (req, res) => {
-    // Searches the Account table to find user
-    models.Account.findOne({
-      where: {
-        UserId: req.params.id
-      },
+  app.get("/api/accounts", function(req, res) {
+    var query = {};
+
+    if (req.query.account_id) {
+      query.UserId = req.query.account_id;
+    }
+
+    models.Account.findAll({
+      where: query,
       include: [models.User]
-    }).then((dbAccount) => {
-      res.json(dbAccount);
+    }).then(function(modelsAccount) {
+      res.json(modelsAccount);
     });
-  })
+  });
+  
+  app.post('/api/accounts', (req, res) => {
+    models.Account.create(req.body).then((modelsAccount) => {
+      res.json(modelsAccount)
+    });
+  });
 
-  app.get('/update', (req, res) => {
-    var userId = req.params.id;
-    
-    var userObj = req.user;
-    // var accBal = obj.account_balance;
-    console.log(req.body);
-    console.log(req.body.userid);
-    console.log(userObj);
-
-    // models.Account.update({
-
-    // })
+  app.put('/api/accounts', (req, res) => {
+    models.Account.update(
+      req.body,
+      {
+        where: {
+          UserId: req.body.UserId
+        }
+      }).then((modelsAccount) => {
+        res.json(modelsAccount);
+      });
   });
 }
